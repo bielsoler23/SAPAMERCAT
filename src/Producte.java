@@ -1,4 +1,5 @@
 public abstract class Producte {
+
     private float preu;
     private String nom;
     private String codiBarres;
@@ -19,5 +20,30 @@ public abstract class Producte {
 
     public String getCodiBarres() {
         return codiBarres;
+    }
+
+    public void setPreu(float preu) {
+        this.preu = preu;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setCodiBarres(String codiBarres) {
+        this.codiBarres = codiBarres;
+    }
+
+    // IMPORTANT per Map
+    @Override
+    public boolean equals(Object o) {
+        if(!(o instanceof Producte)) return false;
+        Producte p = (Producte) o;
+        return codiBarres.equals(p.getCodiBarres()) && getPreu() == p.getPreu();
+    }
+
+    @Override
+    public int hashCode() {
+        return codiBarres.hashCode();
     }
 }
